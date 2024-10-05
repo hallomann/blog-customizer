@@ -2,10 +2,10 @@ import { ElementType, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { FontFamiliesClasses } from 'src/constants/articleProps';
 
-import styles from './index.module.scss';
+import styles from '../styles/index.module.scss';
 
 type TextProps = {
-	/** на вывод */
+	/** текст для вывода */
 	children: ReactNode;
 	/** тег */
 	as?: ElementType;
@@ -23,7 +23,7 @@ type TextProps = {
 	align?: 'center' | 'left';
 
 	family?: FontFamiliesClasses;
-	/** делает динамическим только семью шрифтов и цвет */
+
 	dynamicLite?: boolean;
 };
 

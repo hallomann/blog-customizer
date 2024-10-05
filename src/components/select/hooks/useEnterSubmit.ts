@@ -23,5 +23,5 @@ export const useEnterSubmit = ({
 		return () => {
 			placeholderEl.removeEventListener('keydown', handleEnterKeyDown);
 		};
-	}, []);
+	}, []); // Пустой массив зависимостей, значит эффект выполняется только при монтировании компонента
 };
