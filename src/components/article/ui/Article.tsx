@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import plane from 'src/images/plane.png';
 import { Text } from 'components/text';
 
-import styles from './Article.module.scss';
+import styles from '../styles/Article.module.scss';
 
 export const Article = () => {
 	return (

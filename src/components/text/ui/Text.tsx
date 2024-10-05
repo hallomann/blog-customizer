@@ -2,20 +2,20 @@ import { ElementType, ReactNode } from 'react';
 import { clsx } from 'clsx';
 import { FontFamiliesClasses } from 'src/constants/articleProps';
 
-import styles from './index.module.scss';
+import styles from '../styles/index.module.scss';
 
 type TextProps = {
-	/** на вывод */
+	/** текст для вывода */
 	children: ReactNode;
 	/** тег */
 	as?: ElementType;
 	/** изменение текста в зависимости от конфига */
 	dynamic?: boolean;
-
+	
 	size?: 12 | 18 | 22 | 25 | 31 | 45;
 
 	weight?: 400 | 800;
-
+	
 	fontStyle?: 'italic' | 'normal';
 	/** должен ли текст быть в верхнем регистре */
 	uppercase?: boolean;
@@ -23,7 +23,7 @@ type TextProps = {
 	align?: 'center' | 'left';
 
 	family?: FontFamiliesClasses;
-	/** делает динамическим только семью шрифтов и цвет */
+
 	dynamicLite?: boolean;
 };
 
