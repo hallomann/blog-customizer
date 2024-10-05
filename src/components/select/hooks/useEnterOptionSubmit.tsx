@@ -16,8 +16,7 @@ export const useEnterOptionSubmit = ({
 		const option = optionRef.current;
 		if (!option) return;
 		const handleEnterKeyDown = (event: KeyboardEvent) => {
-			if (document.activeElement === option && event.key === 'Enter') {
-				// Проверяем, является ли активный элемент нашим элементом и была ли нажата клавиша Enter
+			if (document.activeElement === option && event.key === 'Enter') { // Проверяем, является ли активный элемент нашим элементом и была ли нажата клавиша Enter
 				onClick(value);
 			}
 		};
