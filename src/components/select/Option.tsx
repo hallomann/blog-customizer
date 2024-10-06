@@ -1,24 +1,31 @@
-import { useRef } from 'react';
-import type { MouseEventHandler } from 'react';
+// Компонент для отображения опции в выпадающем списке
+import { useRef, useEffect } from 'react';
 import clsx from 'clsx';
 import { OptionType } from 'src/constants/articleProps';
 import { Text } from 'components/text';
+import type { MouseEventHandler } from 'react';
 import { isFontFamilyClass } from './helpers/isFontFamilyClass';
 import { useEnterOptionSubmit } from './hooks/useEnterOptionSubmit';
 
 import styles from './Select.module.scss';
 
+// Типы пропсов компонента Option
 type OptionProps = {
-	option: OptionType;
+	option: OptionType; // Объект опции
 	onClick: (value: OptionType['value']) => void;
+	isActive: boolean; 
 };
 
-export const Option = (props: OptionProps) => {
-	const {
-		option: { value, title, optionClassName, className },
-		onClick,
-	} = props;
+export const Option = ({ option, onClick, isActive }: OptionProps) => {
+	const { value, title, optionClassName, className } = option;
 	const optionRef = useRef<HTMLLIElement>(null);
+
+	// Эффект для автофокуса
+	useEffect(() => {
+		if (isActive && optionRef.current) {
+			optionRef.current.focus();
+		}
+	}, [isActive]);
 
 	const handleClick =
 		(clickedValue: OptionType['value']): MouseEventHandler<HTMLLIElement> =>
@@ -34,14 +41,15 @@ export const Option = (props: OptionProps) => {
 
 	return (
 		<li
-			className={clsx(styles.option, styles[optionClassName || ''])}
+			className={clsx(styles.option, {[styles.active]: isActive}, styles[optionClassName || ''])}
 			value={value}
 			onClick={handleClick(value)}
 			tabIndex={0}
 			data-testid={`select-option-${value}`}
-			ref={optionRef}>
+			ref={optionRef}
+		>
 			<Text family={isFontFamilyClass(className) ? className : undefined}>
-				{title}
+				{title} 
 			</Text>
 		</li>
 	);

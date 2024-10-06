@@ -1,7 +1,9 @@
 node_modules
 public
 .eslintrc.js
+.husky
 storybook-static
+.storybook-preview.ts
 build
 dist
 webpack/*.js
