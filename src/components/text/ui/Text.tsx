@@ -5,25 +5,15 @@ import { FontFamiliesClasses } from 'src/constants/articleProps';
 import styles from '../styles/index.module.scss';
 
 type TextProps = {
-	/** текст для вывода */
 	children: ReactNode;
-	/** тег */
 	as?: ElementType;
-	/** изменение текста в зависимости от конфига */
 	dynamic?: boolean;
-	
 	size?: 12 | 18 | 22 | 25 | 31 | 45;
-
 	weight?: 400 | 800;
-	
 	fontStyle?: 'italic' | 'normal';
-	/** должен ли текст быть в верхнем регистре */
 	uppercase?: boolean;
-
 	align?: 'center' | 'left';
-
 	family?: FontFamiliesClasses;
-
 	dynamicLite?: boolean;
 };
 

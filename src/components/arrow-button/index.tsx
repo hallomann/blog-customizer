@@ -1,1 +1,1 @@
-export { ArrowButton } from './ui/ArrowButton';
+export { ArrowButton } from './ArrowButton';

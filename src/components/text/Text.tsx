@@ -5,26 +5,17 @@ import { FontFamiliesClasses } from 'src/constants/articleProps';
 import styles from './index.module.scss';
 
 type TextProps = {
-	/** на вывод */
 	children: ReactNode;
-	/** тег */
 	as?: ElementType;
-	/** изменение текста в зависимости от конфига */
 	dynamic?: boolean;
-
 	size?: 12 | 18 | 22 | 25 | 31 | 45;
-
 	weight?: 400 | 800;
-
 	fontStyle?: 'italic' | 'normal';
-	/** должен ли текст быть в верхнем регистре */
 	uppercase?: boolean;
-
 	align?: 'center' | 'left';
-
 	family?: FontFamiliesClasses;
-	/** делает динамическим только семью шрифтов и цвет */
 	dynamicLite?: boolean;
+	className?: string; // Новый пропс для дополнительного класса стиля
 };
 
 export const Text = ({
@@ -38,6 +29,7 @@ export const Text = ({
 	align = 'left',
 	family = 'open-sans',
 	dynamicLite = false,
+	className: additionalClassName,
 }: TextProps) => {
 	const className = clsx(
 		styles.text,
@@ -48,7 +40,8 @@ export const Text = ({
 		{ [styles.uppercase]: uppercase },
 		styles[`${align}`],
 		styles[`${family}`],
-		{ [styles.dynamicLite]: dynamicLite }
+		{ [styles.dynamicLite]: dynamicLite },
+		additionalClassName
 	);
 	return <Tag className={className}>{children}</Tag>;
 };
