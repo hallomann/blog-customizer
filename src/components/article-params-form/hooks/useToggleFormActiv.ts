@@ -20,6 +20,11 @@ export const useOutsideClickClose = ({
 			const { target } = e;
 			if (target instanceof Node && !rootRef.current?.contains(target)) {
 				isOpen && onClose?.(!isOpen);
+				/*
+				@TODO:
+				Нужно исправить
+				Нужно останавливать эффект, если форма закрыта, чтобы не навешивать обработчик if (!isOpen) return;
+				*/
 			}
 		};
 
