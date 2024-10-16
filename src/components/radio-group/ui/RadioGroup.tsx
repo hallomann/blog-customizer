@@ -2,7 +2,7 @@ import { OptionType } from 'src/constants/articleProps';
 import { Text } from 'components/text';
 import { Option } from './Option';
 
-import styles from './RadioGroup.module.scss';
+import styles from '../styles/RadioGroup.module.scss';
 
 type RadioGroupProps = {
 	name: string;
