@@ -12,19 +12,18 @@ export const useOutsideClickClose = ({
 	onClose,
 }: UseOutsideClickClose) => {
 	useEffect(() => {
+		if (!isOpen) return;
+
 		const handleEscape = (event: KeyboardEvent) => {
-			event.key == 'Escape' && isOpen && onClose?.(!isOpen);
+			if (event.key === 'Escape') {
+				onClose?.(!isOpen);
+			}
 		};
 
 		const handleClick = (e: MouseEvent) => {
 			const { target } = e;
 			if (target instanceof Node && !rootRef.current?.contains(target)) {
-				isOpen && onClose?.(!isOpen);
-				/*
-				@TODO:
-				Нужно исправить
-				Нужно останавливать эффект, если форма закрыта, чтобы не навешивать обработчик if (!isOpen) return;
-				*/
+				onClose?.(!isOpen);
 			}
 		};
 
@@ -32,8 +31,8 @@ export const useOutsideClickClose = ({
 		window.addEventListener('mousedown', handleClick);
 
 		return () => {
-			document.removeEventListener('keydown', handleEscape);
+			window.removeEventListener('keydown', handleEscape);
 			window.removeEventListener('mousedown', handleClick);
 		};
-	}, [isOpen, onClose]);
+	}, [isOpen, onClose, rootRef]);
 };
